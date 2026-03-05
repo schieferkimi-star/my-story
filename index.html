@@ -615,11 +615,11 @@
 <script>
   // ── Voices ──────────────────────────────────────────────────────────────────
   const VOICES = [
-    { name: 'Hope',    id: 'uYXf8XasLslADfZ2MB4u' },
-    { name: 'Jean',    id: 'eVItLK1UvXctxuaRV2Oq' },
-    { name: 'Jen',     id: 'a5zfmqTslZJBP0jutmVY' },
-    { name: 'Serafina',id: '4tRn1lSkEn13EVTuqb0g' },
-    { name: 'Tiffany', id: 'UM3TOcm5kcELI84GFoAz' },
+    { name: 'Aria',    id: '9BWtsMINqrJLrRacOk9x' },
+    { name: 'Sarah',   id: 'EXAVITQu4vr4xnSDxMaL' },
+    { name: 'Laura',   id: 'FGY2WhTYpPnrIDTdsKH5' },
+    { name: 'Charlotte', id: 'XB0fDUnXU5powFXDhCwa' },
+    { name: 'Alice',   id: 'Xb7hH8MSUJpSbSDYk0k2' },
   ];
 
   // ── State ────────────────────────────────────────────────────────────────────
@@ -885,7 +885,7 @@ Instructions:
         })
       });
 
-      if (!res.ok) { const errText = await res.text(); throw new Error('ElevenLabs ' + res.status + ': ' + errText); }
+      if (!res.ok) { const errText = await res.text(); throw new Error('EL-' + res.status + '-' + errText.substring(0,80)); }
 
       const blob = await res.blob();
       const url  = URL.createObjectURL(blob);
