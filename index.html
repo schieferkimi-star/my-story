@@ -870,11 +870,12 @@ Instructions:
     setPlayState('loading');
 
     try {
-      const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${selectedVoice.id}`, {
+      const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${selectedVoice.id}?output_format=mp3_44100_128`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'xi-api-key': userData.elevenKey,
+          'Accept': 'audio/mpeg',
         },
         body: JSON.stringify({
           text: currentStory,
@@ -897,7 +898,7 @@ Instructions:
 
     } catch(e) {
       setPlayState('idle');
-      // silently fall back to browser TTS
+      document.getElementById('errorMsg').innerHTML = `<p class="error-msg">Voice error: ${e.message}</p>`;
       browserSpeak();
     }
   }
